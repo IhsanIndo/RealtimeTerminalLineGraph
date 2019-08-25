@@ -1,5 +1,6 @@
 import time
 import sys
+import os
 
 class graphSymbols:
     line = "─"
@@ -14,21 +15,22 @@ class graph:
     data = dict()
     symbols = None
     numbers = list()
-    
+    width = 9
+
     def __init__(self, startingValue: int(), **kwargs): #width: int(9), symbols: graphSymbols()):
         self.value = startingValue
-        width = 9 # Default value
+        self.width = 9 # Default value
 
         # Tinggi graph = 9 line (default)
         if kwargs["width"] != None:
-            width = kwargs["width"]
+            self.width = kwargs["width"]
 
         if kwargs["symbols"] != None:
             self.symbols = kwargs["symbols"]
         else:
             symbols = graphSymbols()
 
-        for num in range(int(startingValue - width/2) + 1, int(startingValue + width/2) + 1):
+        for num in range(int(startingValue - self.width/2) + 1, int(startingValue + self.width/2) + 1):
             self.numbers.append(num)
 
         self.numbers.reverse()
@@ -37,6 +39,10 @@ class graph:
         self.value = value
         
     def calculateGraphic(self):
+        nom = int()
+        for num in range(int(self.value - self.width/2) + 1, int(self.value + self.width/2) + 1):
+            self.numbers[nom] = num
+            nom += 1
         sys.stdout.write("\r")
         for i in range(len(self.numbers)):
             sys.stdout.write(str(self.numbers[i]) + " |" + "\n")
@@ -45,10 +51,17 @@ class graph:
     def draw(self, stdout_output=True):
         pass
 
+    def getString():
+        return str()
+
 
 if __name__ == "__main__":
     print("TESTING")
     myGraphsSymbols = graphSymbols()
     myGraph = graph(48, width=9, symbols=myGraphsSymbols)
-    myGraph.calculateGraphic()
+    for a in range(48, 60):
+        myGraph.calculateGraphic()
+        myGraph.setValue(a)
+        time.sleep(0.75)
+        os.system("clear")
 
