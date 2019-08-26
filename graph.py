@@ -42,8 +42,7 @@ class graph:
         nom = int()
         for num in range(int(self.value - self.width/2) + 1, int(self.value + self.width/2) + 1):
             self.numbers[nom] = num
-            nom += 1
-        sys.stdout.write("\r")
+            nom += 1 
         for i in range(len(self.numbers)):
             sys.stdout.write(str(self.numbers[i]) + " |" + "\n")
         sys.stdout.flush()
